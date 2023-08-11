@@ -12,7 +12,7 @@
                         
 <?php 
 
-$con = mysqli_connect("localhost","root","1234","articlesdb");
+$con = mysqli_connect("localhost","root","password","database_name");
 
 $query = "SELECT * FROM articles ORDER BY created_at DESC LIMIT 10 ";
 $query_run = mysqli_query($con, $query);
