@@ -12,14 +12,13 @@
                         
 <?php 
 
-$con = mysqli_connect("localhost","root","password","database_name");
+$con = mysqli_connect("localhost","root","1234","articlesdb");
 
 $query = "SELECT * FROM articles ORDER BY created_at DESC LIMIT 10 ";
 $query_run = mysqli_query($con, $query);
 
                                     
-foreach($query_run as $row)
-{
+foreach($query_run as $row):
 ?>
 <div>
     <p><?php echo $row['created_at']; ?></p>
@@ -30,7 +29,7 @@ foreach($query_run as $row)
 </div>
 
 <?php
-}
+endforeach;
 ?>
 </div>
                     
