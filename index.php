@@ -14,7 +14,7 @@
 
 $con = mysqli_connect("localhost","root","1234","articlesdb");
 
-$query = "SELECT * FROM articles ";
+$query = "SELECT * FROM articles ORDER BY created_at DESC LIMIT 10 ";
 $query_run = mysqli_query($con, $query);
 
                                     
