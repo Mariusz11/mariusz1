@@ -16,3 +16,21 @@ class Articles
         return mysqli_query($db->getConnection(), $sql);
     }
 }
+
+class Article
+{
+    public function getArticles(int $id = 1)
+    {
+        $id = $_GET['id'];
+        $query = "SELECT * FROM articles WHERE id = %d";
+        $query = sprintf($query, $id);
+
+        return $this->executeSql($query);
+    }
+
+    private function executeSql(string $sql)
+    {
+        $db = new DbConnect();
+        return mysqli_query($db->getConnection(), $sql);
+    }
+}

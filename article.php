@@ -13,12 +13,12 @@
     <?php
     include 'library.php';
 
-    $model = new Articles();
+    $model = new Article();
     foreach($model->getArticles() as $row):
         ?>
         <div>
             <p><?= $row['created_at']; ?></p>
-            <h2><a href="article.php?id=<?php echo $row['id'];?>">
+            <h2><a href="?id=<?php echo $row['id'];?>">
                     <?= $row['title']; ?></a></h2>
             <p><?= $row['author']; ?></p>
             <p><?= $row['content']; ?></p>
@@ -26,5 +26,21 @@
         </div>
 
     <?php endforeach; ?>
+
+
+<a href="index.php">Strona Główna</a>
+<h2>Wszystkie artykuły</h2>
+
+<?php
+
+$model = new Articles();
+foreach($model->getArticles() as $row):
+    ?>
+    <div>
+        <p><a href="article.php?id=<?php echo $row['id'];?>">
+                <?= $row['title']; ?></a></p>
+    </div>
+
+<?php endforeach; ?>
 </div>
 </body>
