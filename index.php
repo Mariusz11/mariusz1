@@ -4,32 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tytuł</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    
+
 <div class="blog">
-                        
-<?php 
 
-$con = mysqli_connect("localhost","root","1234","articlesdb");
+    <?php
+    include 'library.php';
 
-$query = "SELECT * FROM articles ORDER BY created_at DESC LIMIT 10 ";
-$query_run = mysqli_query($con, $query);
+    $model = new Articles();
+    foreach($model->getArticles() as $row):
+        ?>
+        <div>
+            <p><?= $row['created_at']; ?></p>
+            <h2><?= $row['title']; ?></h2>
+            <p><?= $row['author']; ?></p>
+            <p><?= $row['content']; ?></p>
+            <hr>
+        </div>
 
-                                    
-foreach($query_run as $row):
-?>
-<div>
-    <p><?php echo $row['created_at']; ?></p>
-    <h2><?php echo $row['title']; ?></h2>
-    <p><?php echo $row['author']; ?></p>
-    <p><?php echo $row['content']; ?></p>
-    <hr>
+    <?php endforeach; ?>
 </div>
-
-<?php
-endforeach;
-?>
-</div>
-                    
